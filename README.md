@@ -172,7 +172,10 @@ press ESC then :wq
 
 #sudo pacman -S xorg-server xorg-server-utils xorg-xinit xorg xorg-apps
 #sudo pacman -S lib32-mesa xf86-video-intel vulkan-intel
+#sudo pacman -S sddm plasma/ plasma-meta / plasma-desktop  || kde-applications
+#systemctl enable sddm
+#reboot
 
-
+Must-have applications:
 
 
