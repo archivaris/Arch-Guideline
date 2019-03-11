@@ -1,3 +1,134 @@
+General Installation procedure (standard install on EFI):
+
+
+Use wifi-menu to connect to network
+
+
+Start ssh # systemctl start sshd
+
+
+Connect to machine via SSH
+
+
+Visit https://www.archlinux.org/mirrorlist/ on another computer, generate mirrorlist
+
+
+Edit /etc/pacman.d/mirrorlist on the Arch computer and paste the faster servers
+
+
+Update package indexes: # pacman -Syyy
+
+
+Create efi partition:
+# fdisk /dev/sda
+ * g (to create an empty GPT partition table)
+ * n
+ * 1
+ * enter
+ * +300M
+ * t
+ * 1 (For EFI)
+ * w
+
+
+Create root partition:
+# fdisk /dev/sda
+* n
+* 2
+* enter
+* +30G
+* w
+
+
+Create home partition:
+# fdisk /dev/sda
+ * n
+ * 3
+ * enter
+ * enter
+ * w
+
+
+# mkfs.fat -F32 /dev/sda1
+
+
+# mkfs.ext4 /dev/sda2
+# mkfs.ext4 /dev/sda3
+# mount /dev/sda2 /mnt
+
+
+# mkdir /mnt/home
+
+
+# mount /dev/sda3 /mnt/home
+
+
+# pacstrap -i /mnt base
+
+
+# genfstab -U -p /mnt >> /mnt/etc/fstab
+
+
+# arch-chroot /mnt
+
+
+# pacman -S base-devel grub efibootmgr dosfstools openssh os-prober mtools linux-headers linux-lts linux-lts-headers
+
+
+# nano /etc/locale.gen (uncomment en_US.UTF-8)
+
+
+# locale-gen
+
+
+Enable root logon via ssh
+
+
+# systemctl enable sshd.service
+
+
+# passwd (for setting root password)
+
+
+# mkdir /boot/EFI
+
+
+# mount /dev/sda1 /boot/EFI
+
+
+# grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+
+
+# cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
+
+
+# grub-mkconfig -o /boot/grub/grub.cfg
+
+
+Create swap file:
+
+# fallocate -l 2G /swapfile
+# chmod 600 /swapfile
+# mkswap /swapfile
+# echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
+
+
+
+$ exit
+
+
+# umount -a
+
+
+# reboot
+
+
+
+
+
+
+
+########ARCHLINUX UEFI LVM ENCRYPTED;
 # Arch-Guideline
 guide to arch instalation
 
