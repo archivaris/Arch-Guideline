@@ -176,6 +176,18 @@ press ESC then :wq
 #systemctl enable sddm
 #reboot
 
-Must-have applications:
+Must-have applications/sites to remember:
+
+https://console.bocal.org/#/
+www.expertime.com
+https://web.digitick.com/billet/ticket.php/1e324e98fb952d13c268b4deea7efc4619da6312/113387157/286941043/2/36825579/digitick.pdf
+https://jakearchibald.github.io/svgomg/
+https://dash.cloudflare.com/login
+https://archivaris.tk/
+https://my.freenom.com/clientarea.php
+https://gtmetrix.com/
+https://epitech.jobteaser.com/fr/users/sign_in?back_to_after_login=%2Ffr%2Fdashboard
+https://www.monster.fr/
+
 
 
